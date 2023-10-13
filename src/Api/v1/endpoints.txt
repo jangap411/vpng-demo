@@ -1,0 +1,5 @@
+ROOT PATH => http://www.bbcredit-api.local/
+
+-- USER END POINTS GET /api/v1/users/<:id> GET /api/v1/users/?deleted=<status_id>&branch=<branch_name> POST /api/v1/users DELETE /api/v1/users/<:id>
+
+-- APPLICATIONS END POINTS GET /api/v1/applications GET /api/v1/applications/<:id> POST /api/v1/applications

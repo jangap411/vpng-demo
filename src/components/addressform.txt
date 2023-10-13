@@ -1,0 +1,79 @@
+{/* <Grid item xs={12} sm={2}>
+            <TextField
+              required
+              id="lot"
+              name="lot"
+              label="Lot Number"
+              fullWidth
+              autoComplete="lot-number"
+              variant="standard"
+              value={lot}
+              onChange={(e) => dispatch(setLot(e.target.value))}
+            />
+          </Grid>
+          <Grid item xs={12} sm={2}>
+            <TextField
+              required
+              id="section"
+              name="section"
+              label="Section Number"
+              fullWidth
+              autoComplete="section-number"
+              variant="standard"
+              value={section}
+              onChange={(e) => dispatch(setSection(e.target.value))}
+            />
+          </Grid>
+
+          <Grid item xs={12} sm={2}>
+            <TextField
+              required
+              id="suburb"
+              name="suburb"
+              label="Surburb"
+              fullWidth
+              autoComplete="suburb-name"
+              variant="standard"
+              value={suburb}
+              onChange={(e) => dispatch(setSuburb(e.target.value))}
+            />
+          </Grid>
+          <Grid item xs={12} sm={2}>
+            <TextField
+              required
+              id="street"
+              name="street"
+              label="Street"
+              fullWidth
+              autoComplete="street-name"
+              variant="standard"
+              value={street}
+              onChange={(e) => dispatch(setStreet(e.target.value))}
+            />
+          </Grid>
+          <Grid item xs={12} sm={2}>
+            <TextField
+              required
+              id="city"
+              name="city"
+              label="City"
+              fullWidth
+              autoComplete="city"
+              variant="standard"
+              value={city}
+              onChange={(e) => dispatch(setCity(e.target.value))}
+            />
+          </Grid>
+          <Grid item xs={12} sm={2}>
+            <TextField
+              required
+              id="province"
+              name="province"
+              label="Province"
+              fullWidth
+              autoComplete="province"
+              variant="standard"
+              value={province}
+              onChange={(e) => dispatch(setProvince(e.target.value))}
+            />
+          </Grid> */}
