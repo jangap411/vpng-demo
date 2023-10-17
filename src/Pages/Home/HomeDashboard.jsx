@@ -30,6 +30,7 @@ import AlertMsg from "../../components/AlertMsg";
 import Users from "../users/Users";
 import Page from "../../components/Page";
 import ContentEditModal from "../../components/ContentEditModal";
+import AddUser from "../users/AddUser";
 
 // header
 const drawerWidth = 230;
@@ -40,7 +41,7 @@ const AppBar = styled(MuiAppBar, {
 })(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
   background:
-    "linear-gradient(90deg, rgba(104,0,0,1) 6%, rgba(193,3,6,1) 48%, rgba(251,131,121,1) 99%)", //"linear-gradient(90deg, #E93749 16.71%, rgba(250, 110, 94, 0.996667) 34.71%, rgba(243, 117, 76, 0.99) 98%)",
+    "linear-gradient(90deg, rgba(104,0,0,1) 3%, rgba(193,3,6,1) 100%, rgba(251,131,121,1) 100%)", //"linear-gradient(90deg, #E93749 16.71%, rgba(250, 110, 94, 0.996667) 34.71%, rgba(243, 117, 76, 0.99) 98%)",
   color: "#FFFFFF",
   transition: theme.transitions.create(["width", "margin"], {
     easing: theme.transitions.easing.sharp,
@@ -198,19 +199,19 @@ const HomeDashboard = () => {
                 {/* dashboard */}
                 <Route path="/" element={<h1>Dashboard</h1>} />
                 {/* Timesheets*/}
-                <Route path="/timesheets/*" element={<Page />} />
-                <Route path="/timesheets/:id" element={<Page />} />
+                <Route path="/sims/*" element={<Page />} />
+                <Route path="/sims/:id" element={<Page />} />
                 {/* </Route> */}
                 {/* Departments */}
-                <Route path="/departments/*" element={<Page />} />
-                <Route path="/departments/:id" element={<Page />} />
+                <Route path="/customers/*" element={<Page />} />
+                <Route path="/customers/:id" element={<Page />} />
                 {/* Employees */}
                 <Route path="/employees/*" element={<Page />} />
                 <Route path="/employees/:id" element={<Page />} />
 
                 {/* Users */}
                 <Route path="/users/*" element={<Users />} />
-                <Route path="/users/:id" element={<Page />} />
+                <Route path="/users/:id" element={<AddUser />} />
                 <Route path="*" element={<h1>Resource Not Found</h1>} />
               </Routes>
             </Grid>
