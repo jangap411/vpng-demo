@@ -1,5 +1,4 @@
 import React from "react";
-import logo2 from "../FinCorp-Logo-crop.png";
 import { Typography, Link } from "@mui/material";
 
 const Footer = () => {
@@ -24,16 +23,11 @@ const Footer = () => {
         {new Date().getFullYear()}{" "}
         <Link
           color="inherit"
-          href="https://www.fincorp.com.pg/"
+          href="https://vodafone.com.pg/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Finance Corporation Ltd.{" "}
-          <img
-            src={logo2}
-            alt="Finance Corporation"
-            style={{ width: "12px" }}
-          />
+          Vodafone PNG.{" "}
         </Link>
       </Typography>
     </div>

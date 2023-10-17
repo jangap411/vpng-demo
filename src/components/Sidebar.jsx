@@ -87,9 +87,9 @@ const Sidebar = () => {
         </ListItemButton>
       </NavLink>
       <NavLink to="/timesheets">
-        <ListItemButton onClick={() => dispatch(setName("Time sheets"))}>
+        <ListItemButton onClick={() => dispatch(setName("Sim Registration"))}>
           <ListItemIcon>
-            <Tooltip title="Time sheets" placement="right">
+            <Tooltip title="Sim Registration" placement="right">
               <ArticleIcon className="icon" />
             </Tooltip>
           </ListItemIcon>
@@ -107,13 +107,13 @@ const Sidebar = () => {
         </ListItemButton>
       </NavLink>
       <NavLink to="departments">
-        <ListItemButton onClick={() => dispatch(setName("Departments"))}>
+        <ListItemButton onClick={() => dispatch(setName("Customers"))}>
           <ListItemIcon>
-            <Tooltip title="Departments" placement="right">
+            <Tooltip title="Customers" placement="right">
               <RecentActorsIcon className="icon" />
             </Tooltip>
           </ListItemIcon>
-          <ListItemText primary="Departments" />
+          <ListItemText primary="Customers" />
         </ListItemButton>
       </NavLink>
       <>

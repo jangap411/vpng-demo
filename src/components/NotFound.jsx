@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { Link } from "@mui/material";
-import logo2 from "../FinCorp-Logo-crop.png";
+import logo2 from "../../src/logo.svg";
 
 function Copyright(props) {
   return (
@@ -17,11 +17,11 @@ function Copyright(props) {
       {new Date().getFullYear()}{" "}
       <Link
         color="inherit"
-        href="https://www.fincorp.com.pg/"
+        href="https://vodafone.com.pg/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Finance Corporation Ltd.{" "}
+        Vodafone PNG.{" "}
         <img src={logo2} alt="Finance Corporation" style={{ width: "12px" }} />
       </Link>
     </Typography>

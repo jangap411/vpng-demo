@@ -9,7 +9,6 @@ import {
   Grid,
   IconButton,
   List,
-  Paper,
   Toolbar,
   Typography,
 } from "@mui/material";
@@ -27,14 +26,9 @@ import logo from "../../logo.svg";
 // components
 import Sidebar from "../../components/Sidebar";
 import Footer from "../../components/Footer";
-import InfoModal from "../../components/InfoModal";
 import AlertMsg from "../../components/AlertMsg";
-import Timesheets from "../Timesheets/Timesheets";
-import Departments from "../Departments/Departments";
-import Employees from "../Employees/Employees";
 import Users from "../users/Users";
 import Page from "../../components/Page";
-import EmployeeTime from "../Timesheets/EmployeeTime";
 import ContentEditModal from "../../components/ContentEditModal";
 
 // header
@@ -46,7 +40,7 @@ const AppBar = styled(MuiAppBar, {
 })(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
   background:
-    "linear-gradient(90deg, #E93749 25.12%, rgba(250, 110, 94, 0.996667) 54.98%, rgba(243, 117, 76, 0.99) 98%)", //"linear-gradient(90deg, #E93749 16.71%, rgba(250, 110, 94, 0.996667) 34.71%, rgba(243, 117, 76, 0.99) 98%)",
+    "linear-gradient(90deg, rgba(104,0,0,1) 6%, rgba(193,3,6,1) 48%, rgba(251,131,121,1) 99%)", //"linear-gradient(90deg, #E93749 16.71%, rgba(250, 110, 94, 0.996667) 34.71%, rgba(243, 117, 76, 0.99) 98%)",
   color: "#FFFFFF",
   transition: theme.transitions.create(["width", "margin"], {
     easing: theme.transitions.easing.sharp,
@@ -69,7 +63,7 @@ const Drawer = styled(MuiDrawer, {
   "& .MuiDrawer-paper": {
     position: "relative",
     whiteSpace: "nowrap",
-    backgroundColor: "#4B1C31", //"#000000", //"#474849",
+    backgroundColor: "#030000", //"#000000", //"#474849",
     color: "#FFFFFF",
     width: drawerWidth,
     transition: theme.transitions.create("width", {
@@ -193,7 +187,7 @@ const HomeDashboard = () => {
             <Grid container spacing={3}>
               {/* ****popup modals & alerts**** */}
               {/* copyright message */}
-              <InfoModal />
+              {/* <InfoModal /> */}
               {/* Content edit modal */}
               <ContentEditModal />
               {/* alert notification */}
@@ -204,14 +198,14 @@ const HomeDashboard = () => {
                 {/* dashboard */}
                 <Route path="/" element={<h1>Dashboard</h1>} />
                 {/* Timesheets*/}
-                <Route path="/timesheets/*" element={<Timesheets />} />
-                <Route path="/timesheets/:id" element={<EmployeeTime />} />
+                <Route path="/timesheets/*" element={<Page />} />
+                <Route path="/timesheets/:id" element={<Page />} />
                 {/* </Route> */}
                 {/* Departments */}
-                <Route path="/departments/*" element={<Departments />} />
+                <Route path="/departments/*" element={<Page />} />
                 <Route path="/departments/:id" element={<Page />} />
                 {/* Employees */}
-                <Route path="/employees/*" element={<Employees />} />
+                <Route path="/employees/*" element={<Page />} />
                 <Route path="/employees/:id" element={<Page />} />
 
                 {/* Users */}
