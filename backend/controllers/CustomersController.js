@@ -52,8 +52,16 @@ const getCustomer = async (req, res) => {
  */
 const createCustomer = async (req, res) => {
   try {
-    const newCustomer = req.body;
-    const customer = await Customer.create({ newCustomer });
+    const { first_name, last_name, dob, address, msisdn, gender } = req.body;
+
+    const customer = await Customer.create({
+      first_name,
+      last_name,
+      dob,
+      address,
+      msisdn,
+      gender,
+    });
 
     if (!customer) {
       return res.status(400).json({ message: "Error creating customer" });
