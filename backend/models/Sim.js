@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/db.config.js";
+import Customer from "./Customer.js";
 
 const Sim = sequelize.define(
   "Sim",
@@ -26,7 +27,10 @@ const Sim = sequelize.define(
       allowNull: false,
     },
   },
-  { timestamps: false }
+  { timestamps: false, tableName: "Sims" }
 );
+
+Customer.hasMany(Sim, { foreignKey: "customer_idcustomer" });
+Sim.belongsTo(Customer, { foreignKey: "customer_idcustomer" });
 
 export default Sim;
