@@ -16,8 +16,7 @@ import ArticleIcon from "@mui/icons-material/Article";
 import RecentActorsIcon from "@mui/icons-material/RecentActors";
 import SettingsIcon from "@mui/icons-material/Settings";
 import InfoIcon from "@mui/icons-material/Info";
-import EngineeringIcon from "@mui/icons-material/Engineering";
-// import AccountBoxIcon from "@mui/icons-material/AccountBox";
+
 import Cookies from "js-cookie";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -94,16 +93,6 @@ const Sidebar = () => {
             </Tooltip>
           </ListItemIcon>
           <ListItemText primary="Time sheets" />
-        </ListItemButton>
-      </NavLink>
-      <NavLink to="/employees">
-        <ListItemButton onClick={() => dispatch(setName("Employees"))}>
-          <ListItemIcon>
-            <Tooltip title="Employees" placement="right">
-              <EngineeringIcon className="icon" />
-            </Tooltip>
-          </ListItemIcon>
-          <ListItemText primary="Employees" />
         </ListItemButton>
       </NavLink>
       <NavLink to="customers">
