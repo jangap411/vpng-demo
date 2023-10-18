@@ -11,7 +11,7 @@ const getSims = async (req, res) => {
   try {
     const sims = await Sim.findAll();
 
-    res.status(200).json({ sims });
+    res.status(200).json(sims);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
