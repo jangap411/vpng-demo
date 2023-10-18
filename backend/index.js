@@ -7,8 +7,9 @@ const app = express();
 // routes
 import userRoute from "./routes/userRoutes.js";
 import customerRoutes from "./routes/customerRoutes.js";
+import simRoutes from "./routes/simRoutes.js";
 
-app.use("/api/v1", [userRoute, customerRoutes]);
+app.use("/api/v1", [userRoute, customerRoutes, simRoutes]);
 
 app.get("/", (req, res) => {
   res.status(200).json({ status: "OK", message: "Test route" });
