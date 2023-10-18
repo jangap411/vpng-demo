@@ -34,7 +34,7 @@ const getSim = async (req, res) => {
       return res.status(404).json({ message: "Sim not found" });
     }
 
-    res.status(200).json({ sim });
+    res.status(200).json(sim);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -49,15 +49,21 @@ const getSim = async (req, res) => {
  */
 const createSim = async (req, res) => {
   try {
-    const newSim = req.body;
+    const { number, puk_1, puk_2, serial_no, idcustomer } = req.body;
 
-    const sim = await Sim.create({ newSim });
+    const sim = await Sim.create({
+      number,
+      puk_1,
+      puk_2,
+      serial_no,
+      idcustomer,
+    });
 
     if (!sim) {
       return res.status(400).json({ message: "Error Creating Sim" });
     }
 
-    res.status(200).json({ sim });
+    res.status(200).json(sim);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
