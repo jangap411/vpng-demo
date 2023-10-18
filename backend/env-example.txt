@@ -1,0 +1,5 @@
+# DB_HOST=192.168.50.59
+# DB_USER='devuser'
+# DB_PASSWD='adu@2022$ADU'
+# DB_NAME='vp_demo'
+# DB_SOCKET='/var/run/mysqld/mysqld.sock'
