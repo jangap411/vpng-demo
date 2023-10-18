@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import Landing from "./Pages/Landing/Landing";
-// import Login from "./Pages/Login/Login";
+import Login from "./Pages/Login/Login";
 // import Dashboard from "./Pages/Dashboard/Dasboard";
 // import UsersPage from "./Pages/Dashboard/users/UsersPage";
 // import Applications from "./Pages/Dashboard/applications/Applications";
@@ -21,7 +21,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/*" element={<HomeDashboard />} />
-        {/* <Route path="/login" element={<Login />} /> */}
+        <Route path="/login" element={<Login />} />
 
         <Route element={<ProtectedRoutes isSignedIn={true} />}>
           {/* <Route path="/dashboard/*" element={<Dashboard />}>

@@ -89,7 +89,7 @@ const Drawer = styled(MuiDrawer, {
 // theme
 const mdTheme = createTheme({
   typography: {
-    fontFamily: ["Baloo 2", "Roboto", "sans-serif"].join(","),
+    fontFamily: ["Roboto", "sans-serif"].join(","),
   },
 });
 
