@@ -4,6 +4,7 @@ import CardWidget from "../../components/CardWidget";
 import ArticleIcon from "@mui/icons-material/Article";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import InventoryIcon from "@mui/icons-material/Inventory";
+import SignalCellularAltIcon from "@mui/icons-material/SignalCellularAlt";
 
 const Dashboard = () => {
   return (
@@ -17,6 +18,11 @@ const Dashboard = () => {
         heading="Sim Cards Registered"
         icon={<InventoryIcon className="card-icon" />}
         value={31220}
+      />
+      <CardWidget
+        heading="Active Sims"
+        icon={<SignalCellularAltIcon className="card-icon" />}
+        value={21220}
       />
       <CardWidget
         heading="Total Agents"

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button,
   Grid,
@@ -16,6 +16,25 @@ import Title from "../../components/Title";
 const API = "http://localhost:5500/api/v1";
 
 const Sims = () => {
+  // state
+  const [sims, setSims] = useState([]);
+
+  // load data
+  const loadSims = async () => {
+    try {
+      const { data } = await axios.get(`${API}/sims`);
+      console.log(data);
+
+      setSims(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    loadSims();
+  }, []);
+
   return (
     <Grid item xs={12}>
       <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
@@ -50,20 +69,19 @@ const Sims = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {/* {customers.map((customer) => (
-                <TableRow key={customer?.idcustomer}>
-                  <TableCell>{customer?.idcustomer}</TableCell>
-                  <TableCell>{customer?.first_name}</TableCell>
-                  <TableCell>{customer?.last_name}</TableCell>
-                  <TableCell>{customer?.dob}</TableCell>
-                  <TableCell>{customer?.gender}</TableCell>
-                  <TableCell>{customer?.address}</TableCell>
-                  <TableCell>{customer?.msisdn}</TableCell>
+              {sims.map((sim) => (
+                <TableRow key={sim?.idsims}>
+                  <TableCell>{sim?.idsims}</TableCell>
+                  <TableCell>{sim?.number}</TableCell>
+                  <TableCell>{sim?.puk_1}</TableCell>
+                  <TableCell>{sim?.puk_2}</TableCell>
+                  <TableCell>{sim?.serial_no}</TableCell>
+                  <TableCell>{sim?.customer_idcustomer}</TableCell>
                   <TableCell>
-                    <ActionButton id={customer.id} />
+                    <ActionButton id={sim?.id} />
                   </TableCell>
                 </TableRow>
-              ))} */}
+              ))}
             </TableBody>
           </Table>
         </Grid>

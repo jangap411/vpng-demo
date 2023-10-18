@@ -63,7 +63,7 @@ const Customers = () => {
                 <TableCell>First Name</TableCell>
                 <TableCell>Last Name</TableCell>
                 <TableCell>Dob</TableCell>
-                <TableCell>Gedner</TableCell>
+                <TableCell>Gender</TableCell>
                 <TableCell>Address</TableCell>
                 <TableCell>MSISDN</TableCell>
                 <TableCell>Action</TableCell>
