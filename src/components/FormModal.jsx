@@ -14,7 +14,7 @@ import {
 } from "../features/application/applicationSlice";
 import CommentInput from "./CommentInput";
 import { setClearUserState } from "../features/user/userSlice";
-import CdbCheck from "../Pages/Dashboard/applications/CdbCheck";
+// import CdbCheck from "../Pages/Dashboard/applications/CdbCheck";
 
 const style = {
   position: "absolute",
@@ -54,7 +54,7 @@ const FormModal = () => {
       >
         <Box sx={style}>
           {isCdbAmount ? (
-            <CdbCheck />
+            <h1>hello</h1>
           ) : (
             <>
               {/* <AddUserForm /> */}

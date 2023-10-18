@@ -15,10 +15,6 @@ import notificationSlice from "./features/notification/notificationSlice";
 import checksSlice from "./features/checks/checksSlice";
 import clientSlice from "./features/client/clientSlice";
 import authSlice from "./features/auth/authSlice";
-import partnerSlice from "./features/partners/partnerSlice";
-import provinceSlice from "./features/province/provinceSlice";
-import cardSlice from "./features/cards/cardSlice";
-import settingsSlice from "./features/settings/settingsSlice";
 import contentModal from "./features/contentModal/contentModal";
 
 export const store = configureStore({
@@ -38,10 +34,6 @@ export const store = configureStore({
     user: userSlice,
     notification: notificationSlice,
     clients: clientSlice,
-    partners: partnerSlice,
-    provinces: provinceSlice,
-    cards: cardSlice,
-    settings: settingsSlice,
     contentModal: contentModal,
   },
   middleware: (getDefaultMiddleware) =>

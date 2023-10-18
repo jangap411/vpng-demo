@@ -31,6 +31,9 @@ import Users from "../users/Users";
 import Page from "../../components/Page";
 import ContentEditModal from "../../components/ContentEditModal";
 import AddUser from "../users/AddUser";
+import Customers from "../Customers/Customers";
+import Sims from "../Sims/Sims";
+import Dashboard from "./Dashboard";
 
 // header
 const drawerWidth = 230;
@@ -197,13 +200,13 @@ const HomeDashboard = () => {
               {/* ***pages routes*** */}
               <Routes>
                 {/* dashboard */}
-                <Route path="/" element={<h1>Dashboard</h1>} />
+                <Route path="/" element={<Dashboard />} />
                 {/* Timesheets*/}
-                <Route path="/sims/*" element={<Page />} />
+                <Route path="/sims/*" element={<Sims />} />
                 <Route path="/sims/:id" element={<Page />} />
                 {/* </Route> */}
                 {/* Departments */}
-                <Route path="/customers/*" element={<Page />} />
+                <Route path="/customers/*" element={<Customers />} />
                 <Route path="/customers/:id" element={<Page />} />
                 {/* Employees */}
                 <Route path="/employees/*" element={<Page />} />

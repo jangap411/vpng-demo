@@ -1,4 +1,5 @@
 import User from "../models/User.js";
+import bcrypt from "bcrypt";
 
 /**
  * GET get all users function
@@ -52,9 +53,9 @@ const getUser = async (req, res) => {
  */
 const createUser = async (req, res) => {
   try {
-    const { name, username, password, email } = req.body;
+    const { name: full_name, username, password, email } = req.body;
 
-    const user = await user.create({ name, username, password, email });
+    const user = await User.create({ full_name, username, password, email });
 
     if (!user) {
       return res.status(400).json({ message: "Error Creating user" });
@@ -76,7 +77,13 @@ const createUser = async (req, res) => {
 const updateUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, email, password, username } = req.body;
+    const {
+      name: full_name,
+      email,
+      password,
+      username,
+      oldPassword,
+    } = req.body;
 
     // check if exists
     const checkUser = await User.findByPk(id);
@@ -90,16 +97,16 @@ const updateUser = async (req, res) => {
       checkUser.password
     );
 
-    if (!verifyPassword) {
-      return res.status(400).json({
-        message: "Passwords do not match. Please type in the correct passowrds",
-      });
-    }
+    // if (!verifyPassword) {
+    //   return res.status(400).json({
+    //     message: "Passwords do not match. Please type in the correct passowrds",
+    //   });
+    // }
 
     // update user
     const user = await User.update(
       {
-        name,
+        full_name,
         email,
         password,
         username,

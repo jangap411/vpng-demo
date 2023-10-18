@@ -6,10 +6,10 @@ import Cookies from "js-cookie";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import {
-  setPartnerName,
-  setPartnerLogo,
-} from "../features/partners/partnerSlice";
+// import {
+//   setPartnerName,
+//   setPartnerLogo,
+// } from "../features/partners/partnerSlice";
 import {
   setOpenAlert,
   setSeverity,
@@ -101,7 +101,7 @@ const AddPartnerForm = () => {
                   variant="standard"
                   label="Company Name"
                   value={partnerName}
-                  onChange={(e) => dispatch(setPartnerName(e.target.value))}
+                  // onChange={(e) => dispatch(setPartnerName(e.target.value))}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -116,7 +116,7 @@ const AddPartnerForm = () => {
                   autoFocus
                   variant="standard"
                   value={partnerLogo}
-                  onChange={(e) => dispatch(setPartnerLogo(e.target.value))}
+                  // onChange={(e) => dispatch(setPartnerLogo(e.target.value))}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -131,7 +131,7 @@ const AddPartnerForm = () => {
                   autoFocus
                   variant="standard"
                   value={partnerLogo}
-                  onChange={(e) => dispatch(setPartnerLogo(e.target.value))}
+                  // onChange={(e) => dispatch(setPartnerLogo(e.target.value))}
                 />
               </Grid>
 

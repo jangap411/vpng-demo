@@ -35,10 +35,10 @@ import {
 import { getUserList } from "../features/user/userSlice";
 import { closeModal } from "../features/modal/modalSlice";
 import { useParams } from "react-router-dom";
-import {
-  getPartnersList,
-  setPartners,
-} from "../features/partners/partnerSlice";
+// import {
+//   getPartnersList,
+//   setPartners,
+// } from "../features/partners/partnerSlice";
 import { PARTNERS, ROLES } from "../utils/checkUserPartnerAndRole";
 import CONFIG from "../utils/axiosHeaderConfig";
 
@@ -195,13 +195,13 @@ const CreateUserForm = () => {
   const getPartners = async () => {
     try {
       if (ALLOWED_ROLES) {
-        dispatch(getPartnersList());
+        // dispatch(getPartnersList());
       } else {
         const { data } = await axios.get(
           `${API}/partners/users/${PARTNER_ID}`,
           CONFIG
         );
-        dispatch(setPartners(data));
+        // dispatch(setPartners(data));
       }
     } catch (error) {
       console.error(error);

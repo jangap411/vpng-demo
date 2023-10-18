@@ -3,7 +3,6 @@ import "./login.css";
 import logo from "../../logo-fab.svg";
 import { useNavigate, useLocation } from "react-router-dom";
 import Cookies from "js-cookie";
-import Footer from "../../components/Footer";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 // import AlertMsg from "../../components/AlertMsg";
@@ -25,7 +24,7 @@ import {
 } from "../../features/alert/alertSlice";
 import { setIsSignedIn } from "../../features/profile/profileSlice";
 // import AlertMessage from "./AlertMessage";
-import { setCardStateClear } from "../../features/cards/cardSlice";
+// import { setCardStateClear } from "../../features/cards/cardSlice";
 
 // Global constant variable
 const API = process.env.REACT_APP_API_PROD_URL;
@@ -99,7 +98,7 @@ const Login = () => {
       dispatch(setProfile(decode));
       dispatch(setUser(decode));
       dispatch(setIsSignedIn(true));
-      dispatch(setCardStateClear());
+      // dispatch(setCardStateClear());
 
       //redirect to dashboard
       window.location = "/dashboard"; //FIXME:use react router instead
@@ -191,7 +190,6 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

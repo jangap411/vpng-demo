@@ -1,11 +1,13 @@
 import React from "react";
 import Page from "../../components/Page";
 import { Grid, InputLabel, TextField } from "@mui/material";
+import Title from "../../components/Title";
 
 const AddUser = () => {
   return (
     <Page>
-      <Grid item container spacing={2}>
+      <Title>User Details</Title>
+      <Grid item container spacing={2} sx={{ p: 2, m: 1 }}>
         <Grid item xs={12} sm={6}>
           <InputLabel id="full-name">Full Name</InputLabel>
           <TextField variant="standard" name="user-name-field" />

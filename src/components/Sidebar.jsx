@@ -29,12 +29,12 @@ import {
   setProfile,
   setUser,
 } from "../features/profile/profileSlice";
-import { setCardStateClear } from "../features/cards/cardSlice";
-import {
-  setAduInfo,
-  setInfoModalOpen,
-  setIsSettingsModalOpen,
-} from "../features/settings/settingsSlice";
+// import { setCardStateClear } from "../features/cards/cardSlice";
+// import {
+//   setAduInfo,
+//   setInfoModalOpen,
+//   setIsSettingsModalOpen,
+// } from "../features/settings/settingsSlice";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -52,7 +52,7 @@ const Sidebar = () => {
     dispatch(setIsSignedIn(false));
     dispatch(setProfile(null));
 
-    dispatch(setCardStateClear()); //clear card state
+    // dispatch(setCardStateClear()); //clear card state
     // window.location = "/login";
     navigate("/login");
   };
@@ -69,8 +69,8 @@ const Sidebar = () => {
   const PARTER_ACCESS = partners.includes(user?.p);
 
   const handleOpenInfoPage = () => {
-    dispatch(setInfoModalOpen(true));
-    dispatch(setAduInfo(true));
+    // dispatch(setInfoModalOpen(true));
+    // dispatch(setAduInfo(true));
   };
 
   return (
@@ -92,7 +92,7 @@ const Sidebar = () => {
               <ArticleIcon className="icon" />
             </Tooltip>
           </ListItemIcon>
-          <ListItemText primary="Time sheets" />
+          <ListItemText primary="Sim Registration" />
         </ListItemButton>
       </NavLink>
       <NavLink to="customers">

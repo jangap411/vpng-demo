@@ -7,7 +7,7 @@ const User = sequelize.define(
   {
     iduser: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       primaryKey: true,
     },
     full_name: {
