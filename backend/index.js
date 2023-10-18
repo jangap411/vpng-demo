@@ -6,11 +6,12 @@ const app = express();
 
 // routes
 import userRoute from "./routes/userRoutes.js";
+import customerRoutes from "./routes/customerRoutes.js";
 
-app.use("/api/v1", [userRoute]);
+app.use("/api/v1", [userRoute, customerRoutes]);
 
 app.get("/", (req, res) => {
-  res.status(200).json({ status: "OK", message: "success" });
+  res.status(200).json({ status: "OK", message: "Test route" });
 });
 
 // start
