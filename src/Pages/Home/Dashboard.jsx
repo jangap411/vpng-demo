@@ -1,23 +1,29 @@
 import React from "react";
-import { Grid, Paper } from "@mui/material";
-import Title from "../../components/Title";
 import CardWidget from "../../components/CardWidget";
 // icon
 import ArticleIcon from "@mui/icons-material/Article";
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import InventoryIcon from "@mui/icons-material/Inventory";
+
 const Dashboard = () => {
   return (
-    <Grid item xs={12}>
-      <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-        <Title>Dashboard</Title>
-        <>
-          <CardWidget
-            heading="Total Customers"
-            icon={<ArticleIcon className="card-icon" />}
-            value={1220}
-          />
-        </>
-      </Paper>
-    </Grid>
+    <>
+      <CardWidget
+        heading="Total Customers"
+        icon={<ArticleIcon className="card-icon" />}
+        value={1220}
+      />
+      <CardWidget
+        heading="Sim Cards Registered"
+        icon={<InventoryIcon className="card-icon" />}
+        value={31220}
+      />
+      <CardWidget
+        heading="Total Agents"
+        icon={<SupportAgentIcon className="card-icon" />}
+        value={220}
+      />
+    </>
   );
 };
 
