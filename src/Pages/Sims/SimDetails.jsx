@@ -9,6 +9,8 @@ import {
   TableBody,
   TableHead,
   Typography,
+  Tooltip,
+  Button,
 } from "@mui/material";
 import axios from "axios";
 import {
@@ -17,11 +19,36 @@ import {
   setSeverity,
 } from "../../features/alert/alertSlice";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ActionButton from "../../components/ActionButton";
 
 // api
 const API = "http://localhost:5500/api/v1";
+
+const ViewButton = ({ id }) => {
+  const navigate = useNavigate();
+  // handle page navigation
+  const handlePageNavigation = (id) => {
+    console.log("Page navigate");
+    navigate(`/customers/${id}`);
+  };
+
+  return (
+    <Tooltip title="View Details" placement="right">
+      <Button
+        variant="outlined"
+        style={{
+          color: "#E93749",
+          "&:hover": "#EB3C47",
+          border: "1px solid #E93749",
+        }}
+        onClick={(e) => handlePageNavigation(id)}
+      >
+        View
+      </Button>
+    </Tooltip>
+  );
+};
 
 const SimDetails = () => {
   const dispatch = useDispatch();
@@ -108,7 +135,7 @@ const SimDetails = () => {
               <TableCell>{customer?.gender}</TableCell>
               <TableCell>{customer?.address}</TableCell>
               <TableCell>
-                <ActionButton id={customer?.idcustomer} />
+                <ViewButton id={customer?.idcustomer} />
               </TableCell>
             </TableRow>
             {/* ))}  */}

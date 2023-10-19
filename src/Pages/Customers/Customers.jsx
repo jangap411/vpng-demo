@@ -12,12 +12,25 @@ import {
 import axios from "axios";
 import ActionButton from "../../components/ActionButton";
 import Title from "../../components/Title";
+// import { setIsUserForm } from "../../features/user/userSlice";
+import {
+  setOpenModal,
+  setIsCustomerForm,
+  setIsSimForm,
+  setIsUserForm,
+} from "../../features/contentModal/contentModal";
+import { useDispatch, useSelector } from "react-redux";
 
 const API = "http://localhost:5500/api/v1";
 
 const Customers = () => {
+  const dispatch = useDispatch();
   // state
   const [customers, setCustomers] = useState([]);
+  // openning modal
+  const { openModal, isUserForm, isSimForm, isCustomerForm } = useSelector(
+    (state) => state.contentModal
+  );
 
   // load data
   const loadCustomers = async () => {
@@ -35,6 +48,15 @@ const Customers = () => {
     loadCustomers();
   }, []);
 
+  // open form modal
+  const handleOpenModal = () => {
+    dispatch(setOpenModal(!openModal));
+    dispatch(setIsUserForm(!isUserForm));
+    dispatch(setIsCustomerForm(true));
+    dispatch(setIsSimForm(false));
+    dispatch(setIsUserForm(false));
+  };
+
   return (
     <Grid item xs={12}>
       <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
@@ -51,6 +73,7 @@ const Customers = () => {
               ml: 1,
               float: "right",
             }}
+            onClick={handleOpenModal}
           >
             Add Customer
           </Button>

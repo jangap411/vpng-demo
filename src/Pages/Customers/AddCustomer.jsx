@@ -50,6 +50,7 @@ const AddCustomer = () => {
         last_name,
         address,
         gender,
+        dob,
         msisdn,
       });
 
@@ -57,6 +58,8 @@ const AddCustomer = () => {
       if (!customer) {
         openAlertMsg("error", "Error when updating customer");
       }
+
+      openAlertMsg("success", "Customer Added");
     } catch (error) {
       openAlertMsg("error", error.message);
     }
@@ -68,7 +71,7 @@ const AddCustomer = () => {
   }, []);
 
   return (
-    <Page>
+    <>
       <Title>Customer Details</Title>
       <Grid item container spacing={2} sx={{ p: 2, m: 1 }}>
         <Grid item xs={12} sm={4}>
@@ -93,11 +96,11 @@ const AddCustomer = () => {
           />
         </Grid>
         <Grid item xs={12} sm={4}>
-          <InputLabel id="email">Date of Birth</InputLabel>
+          <InputLabel id="dob">Date of Birth</InputLabel>
           <TextField
             variant="standard"
             name="email-field"
-            type="email"
+            type="text"
             value={dob}
             onChange={(e) => setDob(e.target.value)}
           />
@@ -107,7 +110,7 @@ const AddCustomer = () => {
           <TextField
             variant="standard"
             name="password-field"
-            type="password"
+            type="text"
             value={gender}
             onChange={(e) => setGender(e.target.value)}
           />
@@ -127,7 +130,7 @@ const AddCustomer = () => {
           <TextField
             variant="standard"
             name="password-field"
-            type="password"
+            type="text"
             value={msisdn}
             onChange={(e) => setMsisdn(e.target.value)}
           />
@@ -147,10 +150,10 @@ const AddCustomer = () => {
           }}
           onClick={addNewCustomer}
         >
-          update
+          save
         </Button>
       </Grid>
-    </Page>
+    </>
   );
 };
 

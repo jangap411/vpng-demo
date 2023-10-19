@@ -12,10 +12,14 @@ import {
 import ActionButton from "../../components/ActionButton";
 import axios from "axios";
 import Title from "../../components/Title";
-import AddItemSpeedDial from "../../components/AddItemSpeedDial";
-import { setOpenModal } from "../../features/contentModal/contentModal";
+import {
+  setOpenModal,
+  setIsCustomerForm,
+  setIsSimForm,
+  setIsUserForm,
+} from "../../features/contentModal/contentModal";
 import { useDispatch, useSelector } from "react-redux";
-import { setIsUserForm } from "../../features/user/userSlice";
+// import { setIsUserForm } from "../../features/user/userSlice";
 
 // API
 const API_BASE_URI = `http://localhost:5500/api/v1`; //process.env.REACT_APP_API_URL;
@@ -24,8 +28,8 @@ const Users = () => {
   // state
   const dispatch = useDispatch();
   const [users, setUsers] = useState([]);
-  const { openModal } = useSelector((state) => state.contentModal);
-  const { isUserForm } = useSelector((store) => store.contentModal);
+  const { openModal, isUserForm } = useSelector((state) => state.contentModal);
+  // const { isUserForm } = useSelector((store) => store.contentModal);
 
   // load data
   const loadUser = async () => {
@@ -41,7 +45,10 @@ const Users = () => {
   // handle open moda
   const handleOpenModal = () => {
     dispatch(setOpenModal(!openModal));
-    dispatch(setIsUserForm(!isUserForm));
+    //dispatch(setIsUserForm(!isUserForm));
+    dispatch(setIsCustomerForm(false));
+    dispatch(setIsSimForm(false));
+    dispatch(setIsUserForm(true));
   };
 
   useEffect(() => {

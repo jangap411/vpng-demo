@@ -5,6 +5,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useDispatch, useSelector } from "react-redux";
 import { setOpenModal } from "../features/contentModal/contentModal";
 import AddUser from "../Pages/users/AddUser";
+import AddCustomer from "../Pages/Customers/AddCustomer";
 // import EditTimesheet from "../Pages/Timesheets/EditTimesheet";
 
 const style = {
@@ -25,8 +26,10 @@ const ContentEditModal = () => {
   // state management
   const dispatch = useDispatch();
 
-  const { openModal } = useSelector((store) => store.contentModal);
-  const { isUserForm } = useSelector((store) => store.user);
+  const { openModal, isUserForm, isSimForm, isCustomerForm } = useSelector(
+    (store) => store.contentModal
+  );
+  // const { isUserForm } = useSelector((store) => store.user);
   const { isAddCustomerForm } = useSelector((store) => store.user);
 
   //   const [openModal, setOpenModal] = useState(true);
@@ -59,7 +62,7 @@ const ContentEditModal = () => {
             {isUserForm && <AddUser />}
 
             {/* Add new customer form */}
-
+            {isCustomerForm && <AddCustomer />}
             {/* Add new sim form */}
           </>
         </Box>
