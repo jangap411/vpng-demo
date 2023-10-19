@@ -61,6 +61,8 @@ const createSim = async (req, res) => {
   try {
     const { number, puk_1, puk_2, serial_no, customer_idcustomer } = req.body;
 
+    console.log(req.body);
+
     const sim = await Sim.create({
       number,
       puk_1,
@@ -75,6 +77,7 @@ const createSim = async (req, res) => {
 
     res.status(200).json(sim);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -151,7 +154,6 @@ const removeSim = async (req, res) => {
   }
 };
 
-// TODO: search sim function
 /**
  * GET search sim function
  * @access - authenticated users
