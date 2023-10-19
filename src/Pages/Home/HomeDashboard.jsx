@@ -36,6 +36,7 @@ import Sims from "../Sims/Sims";
 import Dashboard from "./Dashboard";
 import UserDetails from "../users/UserDetails";
 import CustomerDetails from "../Customers/CustomerDetails";
+import SimDetails from "../Sims/SimDetails";
 
 // header
 const drawerWidth = 230;
@@ -206,7 +207,7 @@ const HomeDashboard = () => {
                 <Route path="/" element={<Dashboard />} />
                 {/* Timesheets*/}
                 <Route path="/sims/*" element={<Sims />} />
-                <Route path="/sims/:id" element={<Page />} />
+                <Route path="/sims/:id" element={<SimDetails />} />
                 {/* </Route> */}
                 {/* Departments */}
                 <Route path="/customers/*" element={<Customers />} />

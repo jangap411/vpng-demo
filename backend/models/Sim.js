@@ -3,7 +3,7 @@ import sequelize from "../config/db.config.js";
 import Customer from "./Customer.js";
 
 const Sim = sequelize.define(
-  "Sim",
+  "Sims",
   {
     idsims: {
       type: DataTypes.INTEGER,
@@ -24,6 +24,10 @@ const Sim = sequelize.define(
     },
     serial_no: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+    customer_idcustomer: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
   },
