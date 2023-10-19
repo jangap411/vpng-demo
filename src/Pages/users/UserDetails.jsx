@@ -83,7 +83,7 @@ const UserDetails = () => {
       const { data } = await axios.get(`${API}/users/${id}`);
 
       console.log(data);
-      setName(data?.name);
+      setName(data?.full_name);
       setEmail(data?.email);
       setUsername(data?.username);
       setPassword(data?.password);
@@ -107,7 +107,7 @@ const UserDetails = () => {
             <InputLabel id="full-name">Full Name</InputLabel>
             <TextField
               variant="standard"
-              name="user-name-field"
+              name="full-name-field"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
