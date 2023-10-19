@@ -9,6 +9,7 @@ import {
   setMessage,
   setSeverity,
 } from "../../features/alert/alertSlice";
+import { useParams } from "react-router-dom";
 
 // API url
 const API = "http://localhost:5500/api/v1";
@@ -16,6 +17,7 @@ const API = "http://localhost:5500/api/v1";
 const CustomerDetails = () => {
   // state
   const dispatch = useDispatch();
+  const { id } = useParams();
 
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
@@ -35,7 +37,7 @@ const CustomerDetails = () => {
   // load customer
   const loadUserDetails = async () => {
     try {
-      const { data } = await axios.get(`${API}/customers/1`);
+      const { data } = await axios.get(`${API}/customers/${id}`);
       console.log(data);
       setFirstName(data?.first_name);
       setLastName(data?.last_name);
@@ -51,7 +53,7 @@ const CustomerDetails = () => {
   //   update customer
   const updateCustomer = async () => {
     try {
-      const customer = await axios.patch(`${`${API}/customers`}/3`, {
+      const customer = await axios.patch(`${`${API}/customers`}/${id}`, {
         first_name,
         last_name,
         gender,
@@ -74,7 +76,7 @@ const CustomerDetails = () => {
   // delete function
   const deleteCustomer = async () => {
     try {
-      const customer = await axios.delete(`${API}/customers/3`);
+      const customer = await axios.delete(`${API}/customers/${id}`);
 
       // check customer
       if (!customer) {

@@ -9,6 +9,8 @@ import {
 } from "../../features/alert/alertSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Page from "../../components/Page";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 // api
 const API = "http://localhost:5500/api/v1";
@@ -16,6 +18,7 @@ const API = "http://localhost:5500/api/v1";
 const UserDetails = () => {
   // state
   const dispatch = useDispatch();
+  const { id } = useParams();
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -31,16 +34,17 @@ const UserDetails = () => {
     // dispatch(setIsLoading(false));
   };
 
-  // add user function
-  const addNewUser = async () => {
+  // update user function
+  const updateUser = async () => {
     try {
       console.log(name, username, email, password);
-      const user = await axios.post(`${API}/users`, {
+      const user = await axios.patch(`${API}/users/${id}`, {
         name,
         username,
         email,
         password,
       });
+
       if (!user) {
         openAlertMsg("error", "Error adding user");
       }
@@ -51,6 +55,44 @@ const UserDetails = () => {
       openAlertMsg("error", error.message);
     }
   };
+
+  // delete user
+  const deleteUser = async () => {
+    try {
+      // const check = confirm("Press a button!");
+
+      // if (!check) {
+      //   return;
+      // }
+
+      const user = await axios.delete(`${API}/users/${id}`);
+
+      if (!user) {
+        openAlertMsg("error", "Error deleting user");
+      }
+
+      openAlertMsg("success", "User deleted");
+    } catch (error) {
+      openAlertMsg("error", error.message);
+    }
+  };
+
+  // load user data
+  const loadUser = async () => {
+    try {
+      const { data } = await axios.get(`${API}/users/${id}`);
+
+      console.log(data);
+    } catch (error) {
+      openAlertMsg("error", error.message);
+    }
+  };
+
+  // load data
+  useEffect(() => {
+    // load user
+    loadUser();
+  }, []);
 
   return (
     <Page>
@@ -98,23 +140,38 @@ const UserDetails = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </Grid>
-        </Grid>
-        <Grid item sx={{ m: 1, p: 1, width: "90%" }}>
-          <Button
-            variant="contained"
-            style={{
-              backgroundColor: "#B40205",
-              "&:hover": "#790102",
-            }}
-            sx={{
-              mt: 1,
-              ml: 1,
-              float: "right",
-            }}
-            onClick={addNewUser}
-          >
-            save
-          </Button>
+          <Grid item sx={{ m: 1, p: 1, width: "90%" }} xs={12} sm={8}>
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: "#B40205",
+                "&:hover": "#790102",
+              }}
+              sx={{
+                mt: 1,
+                ml: 1,
+                float: "right",
+              }}
+              onClick={deleteUser}
+            >
+              delete
+            </Button>
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: "#B40205",
+                "&:hover": "#790102",
+              }}
+              sx={{
+                mt: 1,
+                ml: 1,
+                float: "right",
+              }}
+              onClick={updateUser}
+            >
+              update
+            </Button>
+          </Grid>
         </Grid>
       </>
     </Page>

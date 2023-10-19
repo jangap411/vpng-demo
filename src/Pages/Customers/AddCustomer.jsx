@@ -17,8 +17,8 @@ const AddCustomer = () => {
   // state
   const dispatch = useDispatch();
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
   const [dob, setDob] = useState("");
   const [gender, setGender] = useState("");
   const [address, setAddress] = useState("");
@@ -46,8 +46,8 @@ const AddCustomer = () => {
   const addNewCustomer = async () => {
     try {
       const customer = await axios.post(`${API}/customers`, {
-        firstName,
-        lastName,
+        first_name,
+        last_name,
         address,
         gender,
         msisdn,
@@ -76,7 +76,7 @@ const AddCustomer = () => {
           <TextField
             variant="standard"
             name="user-name-field"
-            value={firstName}
+            value={first_name}
             onChange={(e) => setFirstName(e.target.value)}
           />
         </Grid>
@@ -86,7 +86,7 @@ const AddCustomer = () => {
             variant="standard"
             name="user-name-field"
             type="text"
-            value={lastName}
+            value={last_name}
             onChange={(e) => {
               setLastName(e.target.value);
             }}
