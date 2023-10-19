@@ -35,7 +35,7 @@ const CustomerDetails = () => {
   // load customer
   const loadUserDetails = async () => {
     try {
-      const { data } = await axios.get(`${API}/customers`);
+      const { data } = await axios.get(`${API}/customers/1`);
       console.log(data);
       setFirstName(data?.firstName);
       setLastName(data?.lastName);
@@ -96,7 +96,7 @@ const CustomerDetails = () => {
           <TextField
             variant="standard"
             name="password-field"
-            type="password"
+            type="text"
             value={gender}
             onChange={(e) => setGender(e.target.value)}
           />
@@ -116,7 +116,7 @@ const CustomerDetails = () => {
           <TextField
             variant="standard"
             name="password-field"
-            type="password"
+            type="text"
             value={msisdn}
             onChange={(e) => setMsisdn(e.target.value)}
           />
