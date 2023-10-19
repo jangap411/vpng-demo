@@ -71,6 +71,23 @@ const CustomerDetails = () => {
     }
   };
 
+  // delete function
+  const deleteCustomer = async () => {
+    try {
+      const customer = await axios.delete(`${API}/customers/3`);
+
+      // check customer
+      if (!customer) {
+        openAlertMsg("error", "Error occured while deleting user");
+      }
+
+      openAlertMsg("success", "Customer deleted.");
+    } catch (error) {
+      console.log("\n----------\n");
+      openAlertMsg("error", error.message);
+    }
+  };
+
   //   load data
   useEffect(() => {
     loadUserDetails();
@@ -143,6 +160,21 @@ const CustomerDetails = () => {
         </Grid>
       </Grid>
       <Grid item sx={{ m: 1, p: 1, width: "90%" }}>
+        <Button
+          variant="contained"
+          style={{
+            backgroundColor: "#B40205",
+            "&:hover": "#790102",
+          }}
+          sx={{
+            mt: 1,
+            ml: 1,
+            float: "right",
+          }}
+          onClick={deleteCustomer}
+        >
+          delete
+        </Button>
         <Button
           variant="contained"
           style={{
