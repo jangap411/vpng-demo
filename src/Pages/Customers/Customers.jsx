@@ -20,6 +20,7 @@ import {
   setIsUserForm,
 } from "../../features/contentModal/contentModal";
 import { useDispatch, useSelector } from "react-redux";
+import CustomerAutoCompleteSearch from "./CustomerAutoCompleteSearch";
 
 const API = "http://localhost:5500/api/v1";
 
@@ -61,7 +62,16 @@ const Customers = () => {
     <Grid item xs={12}>
       <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
         <Title>Customers</Title>
-        <Grid item sx={{ m: 1, p: 1 }}>
+        <Grid
+          item
+          sx={{
+            m: 1,
+            p: 1,
+          }}
+        >
+          <CustomerAutoCompleteSearch />
+        </Grid>
+        <Grid item>
           <Button
             variant="contained"
             style={{

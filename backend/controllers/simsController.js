@@ -1,5 +1,6 @@
 import Sim from "../models/Sim.js";
 import Customer from "../models/Customer.js";
+import { Sequelize, Op } from "sequelize";
 
 /**
  * GET get all sims function
@@ -160,12 +161,25 @@ const removeSim = async (req, res) => {
  */
 const searchSim = async (req, res) => {
   try {
-    res
-      .status(200)
-      .json({ message: "Search sim function to be completed soon" });
+    const { search } = req.body;
+
+    const sim = await Sim.findAll({
+      where: Sequelize.where(
+        Sequelize.fn(
+          "concat",
+          Sequelize.col("idsims"),
+          Sequelize.col("number")
+        ),
+        {
+          [Op.like]: "%" + search + "%",
+        }
+      ),
+    });
+
+    res.status(200).json(sim);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-export { getSims, getSim, createSim, updateSim, removeSim };
+export { getSims, getSim, createSim, updateSim, removeSim, searchSim };

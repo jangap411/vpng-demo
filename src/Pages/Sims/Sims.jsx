@@ -20,6 +20,7 @@ import {
   setIsUserForm,
 } from "../../features/contentModal/contentModal";
 import { useDispatch, useSelector } from "react-redux";
+import AutoCompleteSimSearch from "./AutoCompleteSimSearch";
 
 const API = "http://localhost:5500/api/v1";
 
@@ -58,6 +59,9 @@ const Sims = () => {
     <Grid item xs={12}>
       <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
         <Title>Sim Cards</Title>
+        <Grid item sx={{ m: 1, p: 1 }}>
+          <AutoCompleteSimSearch />
+        </Grid>
         <Grid item sx={{ m: 1, p: 1 }}>
           <Button
             variant="contained"

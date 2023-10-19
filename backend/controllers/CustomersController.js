@@ -1,4 +1,5 @@
 import Customer from "../models/Customer.js";
+import { Sequelize, Op } from "sequelize";
 
 /**
  * GET get all customers function
@@ -145,9 +146,8 @@ const removeCustomer = async (req, res) => {
   }
 };
 
-// TODO: SEARCH CUSTOMERs
 /**
- * GET remove customer function
+ * POST search customer function
  * @access - authenticated users
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
@@ -155,7 +155,22 @@ const removeCustomer = async (req, res) => {
  */
 const searchCustomer = async (req, res) => {
   try {
-    res.status(200).json({ message: "Search customer" });
+    const { search } = req.body;
+
+    const customer = await Customer.findAll({
+      where: Sequelize.where(
+        Sequelize.fn(
+          "concat",
+          Sequelize.col("idcustomer"),
+          Sequelize.col("first_name")
+        ),
+        {
+          [Op.like]: "%" + search + "%",
+        }
+      ),
+    });
+
+    res.status(200).json(customer);
   } catch (error) {
     res.status(500).json({ message: error });
   }

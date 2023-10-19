@@ -16,7 +16,7 @@ const AddSim = () => {
 
   return (
     <>
-      <Title>Customer Details</Title>
+      <Title>Enter Sim Details</Title>
       <Grid item container spacing={2} sx={{ p: 2, m: 1 }}>
         <Grid item xs={12} sm={4}>
           <InputLabel id="full-name">Number</InputLabel>
