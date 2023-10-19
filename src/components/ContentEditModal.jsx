@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setOpenModal } from "../features/contentModal/contentModal";
 import AddUser from "../Pages/users/AddUser";
 import AddCustomer from "../Pages/Customers/AddCustomer";
+import AddSim from "../Pages/Sims/AddSim";
 // import EditTimesheet from "../Pages/Timesheets/EditTimesheet";
 
 const style = {
@@ -64,6 +65,8 @@ const ContentEditModal = () => {
             {/* Add new customer form */}
             {isCustomerForm && <AddCustomer />}
             {/* Add new sim form */}
+
+            {isSimForm && <AddSim />}
           </>
         </Box>
       </Modal>

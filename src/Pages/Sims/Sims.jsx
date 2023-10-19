@@ -13,11 +13,21 @@ import axios from "axios";
 import ActionButton from "../../components/ActionButton";
 import Title from "../../components/Title";
 
+import {
+  setOpenModal,
+  setIsCustomerForm,
+  setIsSimForm,
+  setIsUserForm,
+} from "../../features/contentModal/contentModal";
+import { useDispatch, useSelector } from "react-redux";
+
 const API = "http://localhost:5500/api/v1";
 
 const Sims = () => {
   // state
+  const dispatch = useDispatch();
   const [sims, setSims] = useState([]);
+  const { openModal, isUserForm } = useSelector((state) => state.contentModal);
 
   // load data
   const loadSims = async () => {
@@ -35,6 +45,15 @@ const Sims = () => {
     loadSims();
   }, []);
 
+  // handle open moda
+  const handleOpenModal = () => {
+    dispatch(setOpenModal(!openModal));
+    //dispatch(setIsUserForm(!isUserForm));
+    dispatch(setIsCustomerForm(false));
+    dispatch(setIsSimForm(true));
+    dispatch(setIsUserForm(false));
+  };
+
   return (
     <Grid item xs={12}>
       <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
@@ -51,6 +70,7 @@ const Sims = () => {
               ml: 1,
               float: "right",
             }}
+            onClick={handleOpenModal}
           >
             Add Sim
           </Button>
