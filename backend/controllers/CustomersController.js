@@ -91,9 +91,9 @@ const updateCustomer = async (req, res) => {
     }
 
     // update customer
-    const { firstName, lastName, address, gender, msisdn } = req.body;
+    const { first_name, last_name, address, gender, msisdn } = req.body;
     const customer = await Customer.update(
-      { first_name: firstName, last_name: lastName, address, msisdn, gender },
+      { first_name, last_name, address, msisdn, gender },
       {
         where: {
           idcustomer: id,

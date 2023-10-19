@@ -20,22 +20,11 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/*" element={<HomeDashboard />} />
         <Route path="/login" element={<Login />} />
 
-        <Route element={<ProtectedRoutes isSignedIn={true} />}>
-          {/* <Route path="/dashboard/*" element={<Dashboard />}>
-            <Route path="users" element={<UsersPage />} />
-            <Route path="applications" element={<Applications />} />
-
-            <Route path="profile" element={<Profile />} /> 
-           <Route path="*" element={<NotFound />} /> 
-          </Route>
-           */}
+        <Route element={<ProtectedRoutes isSignedIn={a} />}>
+          <Route path="/*" element={<HomeDashboard />} />
         </Route>
-        {/* <Route path="/table" element={<MuiDatagrid />} /> */}
-        {/* <Route path="/charts" element={<Charts />} /> */}
-
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

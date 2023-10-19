@@ -23,11 +23,12 @@ import {
   setOpenAlertMsg,
 } from "../../features/alert/alertSlice";
 import { setIsSignedIn } from "../../features/profile/profileSlice";
+import AlertMsg from "../../components/AlertMsg";
 // import AlertMessage from "./AlertMessage";
 // import { setCardStateClear } from "../../features/cards/cardSlice";
 
 // Global constant variable
-const API = process.env.REACT_APP_API_PROD_URL;
+const API = "http://localhost:5500/api/v1";
 const SECURE_FLAG = process.env.REACT_APP_SECURE_COOKIE;
 const HTTP_ONLY = process.env.REACT_APP_COOKIE_HTTPONLY;
 const MINUTES = process.env.REACT_APP_MINUTES;
@@ -42,7 +43,7 @@ const Login = () => {
   const location = useLocation();
 
   // const { name } = useSelector((store) => store.profile);
-  const { alertMsg } = useSelector((store) => store.alert);
+  const { alertMsg, severity, message } = useSelector((store) => store.alert);
   const { isSignedIn } = useSelector((store) => store.profile);
 
   const [username, setUsername] = useState("");
@@ -50,8 +51,8 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const user = {
-    userName: username,
-    password: password,
+    username,
+    password,
   };
 
   let prof = {};
@@ -60,7 +61,7 @@ const Login = () => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      const { data } = await axios.post(`${API}/authenticate`, user);
+      const { data } = await axios.post(`${API}/auth`, user);
       let { token } = data;
 
       // create access cookie
@@ -101,9 +102,10 @@ const Login = () => {
       // dispatch(setCardStateClear());
 
       //redirect to dashboard
-      window.location = "/dashboard"; //FIXME:use react router instead
+      window.location = "/"; //FIXME:use react router instead
       // navigate("/dashboard");
     } catch (error) {
+      console.error(error);
       setIsLoading(false);
       dispatch(setMessage(error.message));
       dispatch(setSeverity("error"));
@@ -138,6 +140,7 @@ const Login = () => {
       {/* {alertMsg && (
         <div style={{ margin: "0 auto", width: "60%" }}>{<AlertMessage />}</div>
       )} */}
+      <AlertMsg severity={severity} message={message} />
       <div className="bg-gradient">
         <div className="login-container">
           <div className="login-text">

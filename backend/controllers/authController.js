@@ -1,40 +1,22 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import User from "../models/userModel.js";
+import User from "../models/User.js";
 
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET || "secret@2023";
 
 const authenticateUser = async (req, res) => {
   try {
-    let { userName, password } = req.body;
+    let { username, password } = req.body;
 
     const user = await User.findOne({
-      where: { userName },
-      attributes: [
-        "Id",
-        "firstName",
-        "lastName",
-        "userName",
-        "userEmail",
-        "password",
-        "user_roles_Id",
-        "partners_Id",
-        "branch_Id",
-        "isActive",
-        "isDeleted",
-      ],
+      where: { username },
+      attributes: ["iduser", "full_name", "username", "email", "password"],
     });
 
     if (!user) {
       return res
         .status(404)
         .json({ status: "error", data: "Account does not exist." });
-    }
-
-    if (!user.isActive) {
-      return res
-        .status(403)
-        .json({ status: "warning", data: "Your account has been disabled" });
     }
 
     // return console.log(user);
@@ -44,13 +26,10 @@ const authenticateUser = async (req, res) => {
         // creating the token
         let token = jwt.sign(
           {
-            I: user.Id,
-            f: user.firstName,
-            l: user.lastName,
-            u: user.userName,
-            e: user.userEmail,
-            r: user.user_roles_Id,
-            p: user.partners_Id,
+            I: user.iduser,
+            f: user.full_name,
+            u: user.username,
+            e: user.email,
           },
           JWT_SECRET,
           { expiresIn: "1hr" }
