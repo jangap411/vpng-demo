@@ -4,6 +4,7 @@ import CloseIcon from "@mui/icons-material/Close";
 // state management
 import { useDispatch, useSelector } from "react-redux";
 import { setOpenModal } from "../features/contentModal/contentModal";
+import AddUser from "../Pages/users/AddUser";
 // import EditTimesheet from "../Pages/Timesheets/EditTimesheet";
 
 const style = {
@@ -53,6 +54,7 @@ const ContentEditModal = () => {
             {/* TODO: Added logical to render each form dynamically */}
             {/* <EditTimesheet /> */}
             content here
+            <AddUser />
           </>
         </Box>
       </Modal>

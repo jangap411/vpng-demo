@@ -34,6 +34,7 @@ import AddUser from "../users/AddUser";
 import Customers from "../Customers/Customers";
 import Sims from "../Sims/Sims";
 import Dashboard from "./Dashboard";
+import UserDetails from "../users/UserDetails";
 
 // header
 const drawerWidth = 230;
@@ -102,6 +103,7 @@ const HomeDashboard = () => {
   // state
   const [open, setOpen] = useState(true);
   const { title } = useSelector((state) => state.title);
+  const { openAlert, message, severity } = useSelector((state) => state.alert);
 
   // toggle drawer
   const toggleDrawer = () => {
@@ -195,7 +197,7 @@ const HomeDashboard = () => {
               {/* Content edit modal */}
               <ContentEditModal />
               {/* alert notification */}
-              <AlertMsg severity={"success"} message={"Hello"} />
+              {openAlert && <AlertMsg severity={severity} message={message} />}
 
               {/* ***pages routes*** */}
               <Routes>
@@ -214,7 +216,7 @@ const HomeDashboard = () => {
 
                 {/* Users */}
                 <Route path="/users/*" element={<Users />} />
-                <Route path="/users/:id" element={<AddUser />} />
+                <Route path="/users/:id" element={<UserDetails />} />
                 <Route path="*" element={<h1>Resource Not Found</h1>} />
               </Routes>
             </Grid>

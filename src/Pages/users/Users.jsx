@@ -13,13 +13,17 @@ import ActionButton from "../../components/ActionButton";
 import axios from "axios";
 import Title from "../../components/Title";
 import AddItemSpeedDial from "../../components/AddItemSpeedDial";
+import { setOpenModal } from "../../features/contentModal/contentModal";
+import { useDispatch, useSelector } from "react-redux";
 
 // API
 const API_BASE_URI = `http://localhost:5500/api/v1`; //process.env.REACT_APP_API_URL;
 
 const Users = () => {
   // state
+  const dispatch = useDispatch();
   const [users, setUsers] = useState([]);
+  const { openModal } = useSelector((state) => state.contentModal);
   // load data
   const loadUser = async () => {
     try {
@@ -52,6 +56,7 @@ const Users = () => {
               ml: 1,
               float: "right",
             }}
+            onClick={() => dispatch(setOpenModal(!openModal))}
           >
             Add User
           </Button>
