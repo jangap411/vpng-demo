@@ -82,7 +82,7 @@ const Users = () => {
                   <TableCell>{user?.username}</TableCell>
                   <TableCell>{user?.email}</TableCell>
                   <TableCell>
-                    <ActionButton id={user.id} />
+                    <ActionButton id={user?.iduser} />
                   </TableCell>
                 </TableRow>
               ))}
