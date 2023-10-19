@@ -83,6 +83,10 @@ const UserDetails = () => {
       const { data } = await axios.get(`${API}/users/${id}`);
 
       console.log(data);
+      setName(data?.name);
+      setEmail(data?.email);
+      setUsername(data?.username);
+      setPassword(data?.password);
     } catch (error) {
       openAlertMsg("error", error.message);
     }
