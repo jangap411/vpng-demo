@@ -37,6 +37,12 @@ const CustomerDetails = () => {
     try {
       const { data } = await axios.get(`${API}/customers`);
       console.log(data);
+      setFirstName(data?.firstName);
+      setLastName(data?.lastName);
+      setGender(data?.gender);
+      setDob(data?.dob);
+      setMsisdn(data?.msisdn);
+      setAddress(data?.address);
     } catch (error) {
       openAlertMsg("error", error.message);
     }
