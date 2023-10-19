@@ -17,8 +17,8 @@ const CustomerDetails = () => {
   // state
   const dispatch = useDispatch();
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
   const [dob, setDob] = useState("");
   const [gender, setGender] = useState("");
   const [address, setAddress] = useState("");
@@ -37,8 +37,8 @@ const CustomerDetails = () => {
     try {
       const { data } = await axios.get(`${API}/customers/1`);
       console.log(data);
-      setFirstName(data?.firstName);
-      setLastName(data?.lastName);
+      setFirstName(data?.first_name);
+      setLastName(data?.last_name);
       setGender(data?.gender);
       setDob(data?.dob);
       setMsisdn(data?.msisdn);
@@ -49,7 +49,27 @@ const CustomerDetails = () => {
   };
 
   //   update customer
-  const updateCustomer = async () => {};
+  const updateCustomer = async () => {
+    try {
+      const customer = await axios.patch(`${`${API}/customers`}/3`, {
+        first_name,
+        last_name,
+        gender,
+        dob,
+        address,
+        msisdn,
+      });
+
+      // check update
+      if (!customer) {
+        openAlertMsg("error", "Error while updating.");
+      }
+
+      openAlertMsg("success", "Customer data updated.");
+    } catch (error) {
+      openAlertMsg("error", error.message);
+    }
+  };
 
   //   load data
   useEffect(() => {
@@ -65,7 +85,7 @@ const CustomerDetails = () => {
           <TextField
             variant="standard"
             name="user-name-field"
-            value={firstName}
+            value={first_name}
             onChange={(e) => setFirstName(e.target.value)}
           />
         </Grid>
@@ -75,7 +95,7 @@ const CustomerDetails = () => {
             variant="standard"
             name="user-name-field"
             type="text"
-            value={lastName}
+            value={last_name}
             onChange={(e) => {
               setLastName(e.target.value);
             }}
