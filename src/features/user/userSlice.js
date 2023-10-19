@@ -32,6 +32,7 @@ const initialState = {
   disableUsers: 0,
   roles: [],
   updateUserInfo: false,
+  isUserForm: false,
 };
 
 //get the user lists
@@ -106,6 +107,9 @@ const userSlice = createSlice({
     setUpdateUserInfo: (state, { payload }) => {
       state.updateUserInfo = payload;
     },
+    setIsUserForm: (state, { payload }) => {
+      state.isUserForm = payload;
+    },
     setClearUserState: (state) => {
       state.firstName = "";
       state.lastName = "";
@@ -164,6 +168,7 @@ export const {
   setRoles,
   setUpdateUserInfo,
   setClearUserState,
+  setIsUserForm,
 } = userSlice.actions;
 
 export default userSlice.reducer;

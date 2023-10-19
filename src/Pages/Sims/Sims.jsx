@@ -78,7 +78,7 @@ const Sims = () => {
                   <TableCell>{sim?.serial_no}</TableCell>
                   <TableCell>{sim?.customer_idcustomer}</TableCell>
                   <TableCell>
-                    <ActionButton id={sim?.id} />
+                    <ActionButton id={sim?.idsims} />
                   </TableCell>
                 </TableRow>
               ))}

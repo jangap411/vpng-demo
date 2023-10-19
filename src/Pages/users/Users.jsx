@@ -15,6 +15,7 @@ import Title from "../../components/Title";
 import AddItemSpeedDial from "../../components/AddItemSpeedDial";
 import { setOpenModal } from "../../features/contentModal/contentModal";
 import { useDispatch, useSelector } from "react-redux";
+import { setIsUserForm } from "../../features/user/userSlice";
 
 // API
 const API_BASE_URI = `http://localhost:5500/api/v1`; //process.env.REACT_APP_API_URL;
@@ -24,6 +25,8 @@ const Users = () => {
   const dispatch = useDispatch();
   const [users, setUsers] = useState([]);
   const { openModal } = useSelector((state) => state.contentModal);
+  const { isUserForm } = useSelector((store) => store.contentModal);
+
   // load data
   const loadUser = async () => {
     try {
@@ -33,6 +36,12 @@ const Users = () => {
     } catch (error) {
       console.error(error);
     }
+  };
+
+  // handle open moda
+  const handleOpenModal = () => {
+    dispatch(setOpenModal(!openModal));
+    dispatch(setIsUserForm(!isUserForm));
   };
 
   useEffect(() => {
@@ -56,7 +65,7 @@ const Users = () => {
               ml: 1,
               float: "right",
             }}
-            onClick={() => dispatch(setOpenModal(!openModal))}
+            onClick={handleOpenModal}
           >
             Add User
           </Button>

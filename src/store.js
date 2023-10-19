@@ -16,6 +16,7 @@ import checksSlice from "./features/checks/checksSlice";
 import clientSlice from "./features/client/clientSlice";
 import authSlice from "./features/auth/authSlice";
 import contentModal from "./features/contentModal/contentModal";
+import simSlice from "./features/sim/simSlice";
 
 export const store = configureStore({
   reducer: {
@@ -35,6 +36,7 @@ export const store = configureStore({
     notification: notificationSlice,
     clients: clientSlice,
     contentModal: contentModal,
+    sim: simSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }),

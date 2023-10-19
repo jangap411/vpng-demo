@@ -25,7 +25,9 @@ const ContentEditModal = () => {
   // state management
   const dispatch = useDispatch();
 
-  const { openModal } = useSelector((state) => state.contentModal);
+  const { openModal } = useSelector((store) => store.contentModal);
+  const { isUserForm } = useSelector((store) => store.user);
+  const { isAddCustomerForm } = useSelector((store) => store.user);
 
   //   const [openModal, setOpenModal] = useState(true);
   return (
@@ -52,9 +54,13 @@ const ContentEditModal = () => {
             </IconButton>
             {/* Multiple forms to be displayed */}
             {/* TODO: Added logical to render each form dynamically */}
-            {/* <EditTimesheet /> */}
-            content here
-            <AddUser />
+
+            {/* Add new user form */}
+            {isUserForm && <AddUser />}
+
+            {/* Add new customer form */}
+
+            {/* Add new sim form */}
           </>
         </Box>
       </Modal>
